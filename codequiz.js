@@ -125,11 +125,11 @@ function showScores() {
     saveScore.innerHTML='Save Your Score';
     element.appendChild(saveScore);
     saveScore.addEventListener('click', function(event) {
-        var keyVal= quiz.score;
-        var Val= inputIni.value;
-        console.log(keyVal+Val);
-        localStorage.setItem('Score', keyVal);
-        localStorage.setItem('Initial', Val);
+        var saveData={
+            'Score':quiz.score,
+            'Initial':inputIni.value
+        };
+        localStorage.setItem('saveData',JSON.stringify(saveData));
 
     });
 
@@ -137,9 +137,10 @@ function showScores() {
 //diaply the total scores using View button
 function displayScores() {
     var scores = document.getElementById('coding');
-    var inital = localStorage.getItem('Initial');
-    var scoreNum = localStorage.getItem('Score');
-    scores.innerHTML=inital + scoreNum;
+    var retrievedObject = JSON.parse(localStorage.getItem('saveData'));
+    var score = retrievedObject.Score;
+    var initial = retrievedObject.Initial;
+    scores.innerHTML="Data is retrived from window.localStorage" + "<br>"+"Score for" +initial+ " is: " + score;
 }
 
 // create questions
