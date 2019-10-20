@@ -138,10 +138,12 @@ function showScores() {
 function displayScores() {
     var scores = document.getElementById('coding');
     var retrievedObject = JSON.parse(localStorage.getItem('saveData'));
-    if (retrievedObject== null) { alert("No data was saved");}
+    if (retrievedObject== null) { 
+        alert("No data was saved");}
+    else {
     var score = retrievedObject.Score;
     var initial = retrievedObject.Initial;
-    scores.innerHTML="Data is retrived from window.localStorage" + "<br>"+"Score for" +initial+ " is: " + score;
+    scores.innerHTML="Data is retrived from window.localStorage" + "<br>"+"Score for" +initial+ " is: " + score;}
 }
 
 // create questions
